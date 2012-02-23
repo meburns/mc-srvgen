@@ -10,10 +10,10 @@ $directoryName = "#{$clan}_#{$gameType}"
 def main()
 #  makeServerDirectory()
 #  getMinecraftServer()
-  installMinecraftServer() 
+  initMinecraftServer() 
 end
 
-# Make the New Server's Directory
+# Make the new server's directory
 def makeServerDirectory()
   begin
     Dir.chdir(".")
@@ -33,6 +33,9 @@ def getMinecraftServer()
   end
 end
 
-
+def initMinecraftServer()
+  Dir.chdir($directoryName)
+  system "java -Xms32M -Xmx512M -jar minecraft_server.jar nogui"
+end
 
 main()
