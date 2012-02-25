@@ -1,6 +1,7 @@
 # test.rb 
 # by meburns - 2/22/2012
 require 'net/http'
+require 'updateMinecraftServer'
 
 $clan = "meburns"
 $gameType = "classic"
@@ -35,8 +36,8 @@ def initMinecraftServer()
   system "java -Xms32M -Xmx512M -jar minecraft_server.jar nogui >/dev/null 2>&1 & sleep 1 && kill -9 $! && rm -r world"
 end
 
-
 # Run all the main functions
   makeServerDirectory()
   getMinecraftServer()
   initMinecraftServer()
+  updateServer()
