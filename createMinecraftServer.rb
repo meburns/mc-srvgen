@@ -6,12 +6,7 @@ $clan = "meburns"
 $gameType = "classic"
 $directoryName = "#{$clan}_#{$gameType}"
 
-# Run all the main functions
-def main()
-#  makeServerDirectory()
-#  getMinecraftServer()
-  initMinecraftServer() 
-end
+
 
 # Make the new server's directory
 def makeServerDirectory()
@@ -20,6 +15,7 @@ def makeServerDirectory()
     Dir.mkdir($directoryName)
   rescue
     puts "\n Be Careful!!! This directory already exists!"; puts "\n"
+    abort
   end
 end
 
@@ -35,7 +31,12 @@ end
 
 def initMinecraftServer()
   Dir.chdir($directoryName)
-  system "java -Xms32M -Xmx512M -jar minecraft_server.jar nogui"
+  # Initialize the server, give it a second to populate the files, kill the server, remove the corrupted world folder
+  system "java -Xms32M -Xmx512M -jar minecraft_server.jar nogui >/dev/null 2>&1 & sleep 1 && kill -9 $! && rm -r world"
 end
 
-main()
+
+# Run all the main functions
+  makeServerDirectory()
+  getMinecraftServer()
+  initMinecraftServer()
