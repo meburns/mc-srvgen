@@ -34,10 +34,12 @@ def initMinecraftServer()
   Dir.chdir($directoryName)
   # Initialize the server, give it a second to populate the files, kill the server, remove the corrupted world folder
   system "java -Xms32M -Xmx512M -jar minecraft_server.jar nogui >/dev/null 2>&1 & sleep 1 && kill -9 $! && rm -r world"
+  a = Hash["white-list" => "false"]
+  updateServer(a)
+
 end
 
 # Run all the main functions
-  makeServerDirectory()
-  getMinecraftServer()
+#  makeServerDirectory()
+#  getMinecraftServer()
   initMinecraftServer()
-  updateServer()
