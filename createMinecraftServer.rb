@@ -7,7 +7,7 @@ require 'updateMinecraftServer'
 $clan = "meburns"
 $gameType = "classic"
 $directoryName = "#{$clan}_#{$gameType}"
-$serverProperties = Hash["white-list" => "true", "level-seed" => "1", "server-ip" => "127.0.0.1"]
+$serverProperties = Hash["white-list" => "true", "level-seed" => "1", "server-ip" => "127.0.0.1", "motd" => $directoryName]
 
 # Make the new server's directory
 def makeServerDirectory()
