@@ -6,6 +6,8 @@ def updateServer(a)
     b[c] = d
   }
 
+  printf(b[white-list])
+
   a.each { |key, value|
     b[key] = value
   }
