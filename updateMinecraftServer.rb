@@ -11,14 +11,15 @@ def updateServer(a)
   }
 
   # Merge the new hash and the original server.properties hash.
-  a.each { |key, value|
-    b[key] = value
+  a.each_key { |key|
+    b[key] = a[key]
   }
 
   # Recreate the server.properties file.
   text = ""
   b.each_key { |key|
     text += "#{key}=#{b[key]}"
+  #  puts "#{key}=#{b[key]}"
   }
 
   # Overwrite the old server.properties with the newly merged one.

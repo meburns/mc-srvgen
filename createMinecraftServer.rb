@@ -7,7 +7,7 @@ require 'updateMinecraftServer'
 $clan = "meburns"
 $gameType = "classic"
 $directoryName = "#{$clan}_#{$gameType}"
-
+$serverProperties = Hash["white-list" => "true", "level-seed" => "1", "server-ip" => "127.0.0.1"]
 
 # Make the new server's directory
 def makeServerDirectory()
@@ -37,8 +37,7 @@ def initMinecraftServer()
   # Initialize the server, give it a second to populate the files, kill the server, remove the corrupted world folder
   system "java -Xms32M -Xmx512M -jar minecraft_server.jar nogui >/dev/null 2>&1 & sleep 1 && kill -9 $! && rm -r world"
   puts "Server Initialized.\n"
-  a = Hash["white-list" => "false"]
-  updateServer(a)
+  updateServer($serverProperties)
 
 end
 
