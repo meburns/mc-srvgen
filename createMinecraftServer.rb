@@ -40,8 +40,3 @@ def initMinecraftServer()
   updateServer($serverProperties)
 
 end
-
-# Run all the main functions
-  makeServerDirectory()
-  getMinecraftServer()
-  initMinecraftServer()
